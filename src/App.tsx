@@ -1,8 +1,11 @@
-import React from 'react';
+import React from "react";
+
+// parts
+import Fundamentals from "./fundamentals";
 
 function App() {
   return (
-    <h1>Initial</h1>
+    <Fundamentals>Initial</Fundamentals>
   );
 }
 
