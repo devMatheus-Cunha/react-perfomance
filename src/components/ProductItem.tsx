@@ -7,17 +7,20 @@ interface ProductItemProps {
     price: number;
     title: string;
   };
+  addToWishlist: (id: number) => void
 }
 
-const ProductItem = ({ product }: ProductItemProps) => {
+const ProductItemComponent = ({ product, addToWishlist }: ProductItemProps) => {
   return (
     <div style={{ color: "white" }}>
       {product.title} - <strong>R$ {product.price}</strong>
+      {" "}
+      <button type="button" onClick={() => addToWishlist(product.id)}>Meu id</button>
     </div>
   );
 };
 
-export default memo(ProductItem, (prevProps, nextProps) => {
+export const ProductItem = memo(ProductItemComponent, (prevProps, nextProps) => {
   return Object.is(prevProps.product, nextProps.product)
 });
 
