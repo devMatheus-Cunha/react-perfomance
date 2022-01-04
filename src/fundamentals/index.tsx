@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useCallback, useState } from "react";
 import SearchResults from "../components/SearchResults";
 
 type ApiData = {
@@ -23,6 +23,11 @@ const Fundamentals: React.FC = () => {
 
     setResults(data);
   }
+
+  const addToWishlist = useCallback((id: number) => {
+    console.log(id);
+  }, []);
+
   return (
     <div>
       <h1 style={{ color: "white" }}>Search</h1>
@@ -36,9 +41,12 @@ const Fundamentals: React.FC = () => {
         <button type="submit">Buscar</button>
       </form>
 
-      <SearchResults results={results} />
+      <SearchResults addToWishlist={addToWishlist} results={results} />
     </div>
   );
 };
 
 export default Fundamentals;
+
+//? When to use
+//! Solving referential equality problems
