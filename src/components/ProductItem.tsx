@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 // interface
 interface ProductItemProps {
@@ -17,4 +17,12 @@ const ProductItem = ({ product }: ProductItemProps) => {
   );
 };
 
-export default ProductItem;
+export default memo(ProductItem, (prevProps, nextProps) => {
+  return Object.is(prevProps.product, nextProps.product)
+});
+
+//? When to use memo
+//! Pure Functions Components
+//! Renders too often
+//! Re-renders with same props
+//! Medium to big sizes
