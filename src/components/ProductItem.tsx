@@ -10,6 +10,9 @@ interface ProductItemProps {
   addToWishlist: (id: number) => void
 }
 
+//--------------------------
+// Export
+//--------------------------
 const ProductItemComponent = ({ product, addToWishlist }: ProductItemProps) => {
   return (
     <div style={{ color: "white" }}>
