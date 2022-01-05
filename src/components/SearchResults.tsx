@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 
 // components
 import { ProductItem } from "./ProductItem";
@@ -9,24 +9,20 @@ interface SearchResultsProps {
     id: number;
     price: number;
     title: string;
-  }[];
+  }[]
+  totalPrice: number
   addToWishlist: (id: number) => void;
 }
 
 //--------------------------
 // Export
 //--------------------------
-const SearchResults = ({ results, addToWishlist }: SearchResultsProps) => {
-  const totalPrice = useMemo(() => {
-    return results.reduce((total, product) => {
-      return total + product.price;
-    }, 0);
-  }, [results]);
+const SearchResults = ({ results, addToWishlist, totalPrice}: SearchResultsProps) => {
   return (
     <div>
-      <h2>Total R$ {totalPrice}</h2>
+      <h2>Total <strong>R$ {totalPrice}</strong></h2>
 
-      {results.map((product) => {
+      {results?.map((product) => {
         return (
           <ProductItem
             key={product.id}

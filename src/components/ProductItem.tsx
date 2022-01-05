@@ -16,7 +16,7 @@ interface ProductItemProps {
 const ProductItemComponent = ({ product, addToWishlist }: ProductItemProps) => {
   return (
     <div style={{ color: "white" }}>
-      {product.title} - <strong>R$ {product.price}</strong>
+      {product.title} - <strong>{product.price}</strong>
       {" "}
       <button type="button" onClick={() => addToWishlist(product.id)}>Meu id</button>
     </div>
