@@ -1,5 +1,5 @@
 import React from "react";
-import { List, ListRowRenderer, AutoSizer } from "react-virtualized";
+import { List, ListRowRenderer } from "react-virtualized";
 
 // components
 import { ProductItem } from "./ProductItem";
@@ -40,7 +40,7 @@ const SearchResults = ({
       <List
         height={300}
         rowHeight={30}
-        width={AutoSizer}
+        width={800}
         overscanRowCount={5}
         rowCount={results.length}
         rowRenderer={rowRenderer}

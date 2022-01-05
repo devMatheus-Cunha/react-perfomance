@@ -17,6 +17,7 @@ type ApiData = {
 // Export
 //--------------------------
 function App() {
+  // hooks
   const [search, setSearch] = useState("");
   const [results, setResults] = useState<ApiData>({
     totalPrice: 0,

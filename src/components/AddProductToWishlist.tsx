@@ -6,6 +6,9 @@ interface AddProductToWishlistProps {
   onRequesClose: () => void;
 }
 
+//--------------------------
+// Export
+//--------------------------
 const AddProductToWishlist = ({
   onAddToWishlist,
   onRequesClose,
