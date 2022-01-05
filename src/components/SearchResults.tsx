@@ -1,4 +1,5 @@
 import React from "react";
+import { List, ListRowRenderer, AutoSizer } from "react-virtualized";
 
 // components
 import { ProductItem } from "./ProductItem";
@@ -9,28 +10,41 @@ interface SearchResultsProps {
     id: number;
     price: number;
     title: string;
-  }[]
-  totalPrice: number
+  }[];
+  totalPrice: number;
   addToWishlist: (id: number) => void;
 }
 
 //--------------------------
 // Export
 //--------------------------
-const SearchResults = ({ results, addToWishlist, totalPrice}: SearchResultsProps) => {
+const SearchResults = ({
+  results,
+  addToWishlist,
+  totalPrice,
+}: SearchResultsProps) => {
+  const rowRenderer: ListRowRenderer = ({ index, key, style }) => {
+    return (
+      <div key={key} style={style}>
+        <ProductItem product={results[index]} addToWishlist={addToWishlist} />
+      </div>
+    );
+  };
+
   return (
     <div>
-      <h2>Total <strong>R$ {totalPrice}</strong></h2>
+      <h2>
+        Total <strong>R$ {totalPrice}</strong>
+      </h2>
 
-      {results?.map((product) => {
-        return (
-          <ProductItem
-            key={product.id}
-            product={product}
-            addToWishlist={addToWishlist}
-          />
-        );
-      })}
+      <List
+        height={300}
+        rowHeight={30}
+        width={AutoSizer}
+        overscanRowCount={5}
+        rowCount={results.length}
+        rowRenderer={rowRenderer}
+      />
     </div>
   );
 };
